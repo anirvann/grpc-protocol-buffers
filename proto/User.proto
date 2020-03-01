@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package UserPackage;
+
+message getUserParams {}
+
+message User {
+  int32 id = 1;
+  string firstName = 2;
+  string lastName = 3;
+}
+
+message UserColln {
+  repeated User users = 1;
+}
+
+service Users {
+  rpc getUsers (getUserParams) returns (UserColln);
+  rpc streamUsers (getUserParams) returns (stream User);
+}
